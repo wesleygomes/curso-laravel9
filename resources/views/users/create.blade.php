@@ -1,33 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Novo usuario')
+@section('title', 'Novo Usuário')
 
 @section('content')
-    <h1>Criar usuarios</h1>
+    <h1 class="text-2xl font-semibold leading-tigh py-2">Novo Usuário</h1>
 
-    @if ($errors->any())
-        <ul class="errors">
-            @foreach ($errors->all() as $error)
-                <li class="error">{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+    <a href="{{ route('users.index') }}" class="bg-cyan-400 rounded-full py-2 px-6 pt-06">Voltar</a>
 
+    <x-alert />
 
-    <form action="{{ route('users.store') }}" method="post">
-        @csrf
-        <div>
-            <label for="name">Nome:</label><br>
-            <input type="text" id="name" name="name" value="{{old('name')}}" placeholder="Insira seu nome"><br>
-
-            <label for="email">E-mail:</label><br>
-            <input type="email" id="email" name="email" value="{{old('email')}}" placeholder="Insira seu E-mail"><br>
-
-            <label for="password">Senha:</label><br>
-            <input type="password" id="password" name="password" placeholder="Insira sua senha">
-            <br>
-            <br>
-            <button type="submit">Salvar</button>
-        </div>
+    <form class="mt-6" action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
+        @include('users._partials.form')
     </form>
 @endsection

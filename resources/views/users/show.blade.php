@@ -1,17 +1,24 @@
 @extends('layouts.app')
 
-@section('title', 'Detatlhes do usuario')
+@section('title', 'Detatlhes do Usuário')
 
 @section('content')
-    <h1>Detalhes do Usuario - {{ $user->name }}</h1>
+    <h1 class="text-2xl font-semibold leading-tigh py-2">Detalhes do Usuário {{ $user->name }}</h1>
 
-    Nome: {{ $user->name }}<br>
-    E-mail: {{ $user->email }}<br><br>
-    <a href="{{ route('users.index') }}">Voltar</a> || <a href="{{ route('users.edit', $user->id) }}">Editar</a>
+    <a href="{{ route('users.index') }}" class="bg-cyan-400 rounded-full py-2 px-6 pt-06">Voltar</a>
 
-    <form action="{{ route('users.destroy', $user->id) }}" method="post">
+    <ul class="mt-6">
+        <li>{{ $user->name }}</li>
+        <li>{{ $user->email }}</li>
+    </ul>
+
+    {{--  --}}
+
+    <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="py-12">
         @method('DELETE')
         @csrf
-        <button type="submit">Excluir</button>
+
+        <button type="submit"
+            class="rounded-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4">Deletar</button>
     </form>
 @endsection
