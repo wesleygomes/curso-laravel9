@@ -1,1 +1,1 @@
-require('./bootstrap');
+console.log("Estou aqui...")
