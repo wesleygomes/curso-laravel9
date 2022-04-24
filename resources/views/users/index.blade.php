@@ -10,6 +10,15 @@
                     <h1 class="text-2xl font-semibold leading-tigh py-2">
                         Listagem de usuários
                     </h1>
+
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="bg-red-600 text-white rounded-full py-2 px-6">Sair</button>
+                    </form>
+                    <h1 class="text-1xl font-semibold leading-tigh mb-2">
+                        {{auth()->user()->name}}
+                    </h1>
+
                     <div class="flex md:flex-nowrap flex-wrap justify-center items-end md:justify-start">
                         <form action="{{ route('users.index') }}" method="get"
                             class="flex md:flex-nowrap flex-wrap justify-center items-end md:justify-start">
